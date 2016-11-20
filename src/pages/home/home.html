@@ -1,0 +1,37 @@
+<ion-header>
+  <ion-navbar color="primary">
+    <ion-buttons start>
+      <button ion-button color="royal" (click)="addWeather()">
+        Add
+      </button>
+    </ion-buttons>
+    <ion-title ><img src="img/logo.jpg" class="logo-title">
+Weather App    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding class="home">
+  <ion-list>
+
+    <ion-item *ngIf="localWeather" (click)="viewForecast(localWeather)">
+      <ion-thumbnail item-left>
+        <img src="http://openweathermap.org/img/w/{{localWeather.weather[0].icon}}.png">
+      </ion-thumbnail>
+      <h2>{{localWeather.main.temp | temperature}}</h2>
+      <h3>{{localWeather.name}}</h3>
+        <p> Low: {{localWeather.main.temp_min | temperature}} High: {{localWeather.main.temp_max | temperature}}</p>
+        <ion-icon name="arrow-forward" item-right></ion-icon>
+        </ion-item>
+
+
+<ion-item *ngFor="let weather of weatherList" (click)="viewForecast(weather)">
+  <ion-thumbnail item-left>
+    <img src="http://openweathermap.org/img/w/{{weather.weather[0].icon}}.png">
+  </ion-thumbnail>
+  <h2>{{weather.main.temp | temperature}}</h2>
+  <h3>{{weather.name}}</h3>
+    <p> Low: {{weather.main.temp_min | temperature}} High: {{weather.main.temp_max | temperature}}</p>
+    <ion-icon name="arrow-forward" item-right></ion-icon>
+    </ion-item>
+  </ion-list>
+</ion-content>

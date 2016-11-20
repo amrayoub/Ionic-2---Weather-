@@ -1,0 +1,22 @@
+
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>{{cityWeather.name}} : Forecast</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding class="forecast">
+  <ion-list>
+  <ion-item *ngFor="let weather of forecast">
+  <ion-thumbnail item-left>
+    <img src="http://openweathermap.org/img/w/{{weather.weather[0].icon}}.png">
+  </ion-thumbnail>
+  <h2> {{weather.dt * 1000 | date:'EEE'}} </h2>
+  <h3> High {{weather.temp.max | temperature}}</h3>
+  <h4> Low {{weather.temp.min | temperature}} </h4>
+</ion-item>
+</ion-list>
+</ion-content>
